@@ -8,37 +8,42 @@ textarea {
   width: 500px;
 }
     </style>
-  <script src="jquery-3.5.1.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   <script>
-$("#submit").click(function () {
-	console.log("click");
-  var streamers = $("#streamer").val().split("\n");
-	console.log(streamers);
-	var names = $("#name").val().split("\n");
-	console.log(names);
+$(document).ready(function() {
+  $("#submit").click(function () {
+    console.log("click");
+    var streamers = $("#streamer").val().split("\n");
+    console.log(streamers);
+    var names = $("#name").val().split("\n");
+    console.log(names);
 
-	if (streamers.length !== names.length) {
-		alert("userID 跟 暱稱數量不一樣!");
-	}
-  
-	var output = ``;
-	for (let i=0; i<streamers.length; i++) {
-  	let s = streamers[i];
-    let n = names[i];
-  	var tmp = `      - user_id: ${s} # ${n}\n        withdrawal: false`;
-    console.log(tmp);
-    output += tmp;
-  }
-	$("#output").val(output);
-});
+    if (streamers.length !== names.length) {
+      alert("userID 跟 暱稱數量不一樣!");
+    }
 
-$("#copy").click(function (){
-	$("#output").select();
-	document.execCommand("Copy");
+    var output = ``;
+    for (let i=0; i<streamers.length; i++) {
+      let s = streamers[i];
+      let n = names[i];
+      var tmp = `      - user_id: ${s} # ${n}\n        withdrawal: false`;
+      console.log(tmp);
+      output += tmp;
+    }
+    $("#output").val(output);
+  });
+
+  $("#copy").click(function (){
+    $("#output").select();
+    document.execCommand("Copy");
+  });
 });
   </script>
   </head>
-  <body>
+    <body>
     <label for="streamer">userID</label>
     <br />
     <textarea id="streamer"></textarea>
