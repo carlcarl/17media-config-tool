@@ -24,12 +24,13 @@ $(document).ready(function() {
     if (streamers.length !== names.length) {
       alert("userID 跟 暱稱數量不一樣!");
     }
+    var d = $("#date").val();
 
     var output = ``;
     for (let i=0; i<streamers.length; i++) {
       let s = streamers[i];
       let n = names[i];
-      var tmp = `      - user_id: ${s} # ${n}\n        withdrawal: false\n`;
+      var tmp = `      - user_id: ${s} # ${n}\n        withdrawal: false\n        start_date: ${d}\n`;
       console.log(tmp);
       output += tmp;
     }
@@ -44,6 +45,9 @@ $(document).ready(function() {
   </script>
   </head>
     <body>
+    <label for="date">合約開始日期</label>
+    <input type="text" id="date" name="date" placeholder="ex: 2021/06/01" />
+    <br />
     <label for="streamer">userID</label>
     <br />
     <textarea id="streamer"></textarea>
